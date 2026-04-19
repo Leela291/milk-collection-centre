@@ -32,10 +32,6 @@ A full-stack web application for a milk collection center. This system helps adm
 3. **Open in Browser**:
    Visit [http://localhost:3001](http://localhost:3001)
 
-### Default Login
-- **ID:** `admin`
-- **Password:** `admin123`
-
 ## Deployment
 
 This app uses a root-level `package.json` that builds the React client and serves it automatically through the Express server.
