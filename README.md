@@ -31,6 +31,9 @@ A full-stack web application for a milk collection center. This system helps adm
    ```
 3. **Open in Browser**:
    Visit [http://localhost:3001](http://localhost:3001)
+4. **Default Username and Password**
+   Username: admin
+   Password : admin123
 
 ## Deployment
 
