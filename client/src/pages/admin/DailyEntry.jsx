@@ -36,7 +36,7 @@ const DailyEntry = () => {
   }, []);
 
   const fetchFarmers = async () => {
-    const res = await axios.get('http://localhost:3001/api/admin/farmers');
+    const res = await axios.get('/api/admin/farmers');
     setFarmers(res.data);
   };
 
@@ -47,7 +47,7 @@ const DailyEntry = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/api/admin/entries', formData);
+      await axios.post('/api/admin/entries', formData);
       alert('Entry added successfully!');
       setFormData({ ...formData, litres: '', fat: '' });
     } catch (err) {

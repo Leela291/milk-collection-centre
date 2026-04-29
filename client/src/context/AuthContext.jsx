@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (farmer_id, password) => {
-        const res = await axios.post('http://localhost:3001/api/auth/login', { farmer_id, password });
+        const res = await axios.post('/api/auth/login', { farmer_id, password });
         const { token, user: userData } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(userData));

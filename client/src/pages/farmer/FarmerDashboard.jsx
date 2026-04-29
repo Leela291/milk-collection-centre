@@ -17,8 +17,8 @@ const FarmerDashboard = () => {
   const fetchData = async () => {
     try {
       const [statsRes, entriesRes] = await Promise.all([
-        axios.get('http://localhost:3001/api/farmer/stats'),
-        axios.get('http://localhost:3001/api/farmer/entries')
+        axios.get('/api/farmer/stats'),
+        axios.get('/api/farmer/entries')
       ]);
       setStats(statsRes.data);
       setEntries(entriesRes.data);

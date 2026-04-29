@@ -15,7 +15,7 @@ const ManageFarmers = () => {
   }, []);
 
   const fetchFarmers = async () => {
-    const res = await axios.get('http://localhost:3001/api/admin/farmers');
+    const res = await axios.get('/api/admin/farmers');
     setFarmers(res.data);
   };
 
@@ -23,10 +23,10 @@ const ManageFarmers = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:3001/api/admin/farmers/${editingId}`, { name, contact });
+        await axios.put(`/api/admin/farmers/${editingId}`, { name, contact });
         alert('Farmer updated successfully!');
       } else {
-        await axios.post('http://localhost:3001/api/admin/farmers', { name, contact, password });
+        await axios.post('/api/admin/farmers', { name, contact, password });
         alert('Farmer added successfully!');
       }
       cancelEdit();
@@ -53,7 +53,7 @@ const ManageFarmers = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this farmer AND all their milk entries permanently?')) return;
     try {
-      await axios.delete(`http://localhost:3001/api/admin/farmers/${id}`);
+      await axios.delete(`/api/admin/farmers/${id}`);
       alert('Farmer deleted!');
       fetchFarmers();
     } catch (err) {

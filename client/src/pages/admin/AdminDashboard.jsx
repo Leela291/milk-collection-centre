@@ -13,17 +13,17 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchStats = async () => {
-    const res = await axios.get('http://localhost:3001/api/admin/stats');
+    const res = await axios.get('/api/admin/stats');
     setStats(res.data);
   };
 
   const fetchEntries = async () => {
-    const res = await axios.get('http://localhost:3001/api/admin/entries');
+    const res = await axios.get('/api/admin/entries');
     setEntries(res.data);
   };
 
   const markAsPaid = async (id) => {
-    await axios.put('http://localhost:3001/api/admin/entries/pay', { entryIds: [id] });
+    await axios.put('/api/admin/entries/pay', { entryIds: [id] });
     fetchStats();
     fetchEntries();
   };
