@@ -55,6 +55,29 @@ router.post('/farmers', (req, res) => {
     }
 });
 
+// Update farmer
+router.put('/farmers/:id', (req, res) => {
+    const { name, contact } = req.body;
+    try {
+        const stmt = db.prepare("UPDATE users SET name = ?, contact = ? WHERE id = ? AND role = 'farmer'");
+        stmt.run(name, contact, req.params.id);
+        res.json({ message: 'Farmer updated successfully' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Delete farmer
+router.delete('/farmers/:id', (req, res) => {
+    try {
+        db.prepare("DELETE FROM milk_entries WHERE farmer_int_id = ?").run(req.params.id);
+        db.prepare("DELETE FROM users WHERE id = ? AND role = 'farmer'").run(req.params.id);
+        res.json({ message: 'Farmer deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // --- Milk Entries Management ---
 
 function getPriceForFat(fat) {
